@@ -123,6 +123,7 @@ export default function Dashboard() {
       const sig = await signer.signMessage(message);
       return sig;
     };
+    console.log("signAuthSig", signAuthSig);
 
     // Get auth sig
     const provider = litAuthClient.getProvider(ProviderType.EthWallet);
@@ -140,6 +141,7 @@ export default function Dashboard() {
     );
     if (pkps.length > 0) {
       setPKPs(pkps);
+      console.log("PKPs", pkps);
     }
     setView(Views.FETCHED);
   }
@@ -245,6 +247,7 @@ export default function Dashboard() {
         );
         if (pkps.length > 0) {
           setPKPs(pkps);
+          console.log("PKPs", pkps);
         }
         setView(Views.FETCHED);
       } catch (err) {
@@ -319,6 +322,7 @@ export default function Dashboard() {
           }], 
         },
       });
+      console.log("sessionSigs", sessionSigs);
       setCurrentPKP(pkp);
       setSessionSigs(sessionSigs);
 
@@ -398,6 +402,7 @@ export default function Dashboard() {
         const litAuthClient = new LitAuthClient({
           litRelayConfig: {
             relayApiKey: 'test-api-key',
+            relayUrl: 'https://localhost',
           },
           litNodeClient,
         });
